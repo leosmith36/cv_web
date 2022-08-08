@@ -68,20 +68,20 @@ function update(){
     let yTickLength = VRANGE / numberTicks, xTickLength = HRANGE / numberTicks;
 
     for (let i = 0; i <= numberTicks; i++){
-        let xTickLabel = (i * xTick + xMin).toFixed(3), yTickLabel = (i * yTick + yMin).toFixed(3);
+        let xTickLabel = ((numberTicks - i) * xTick + xMin).toFixed(3), yTickLabel = (i * yTick + yMin).toPrecision(3);
         context.fillText((xTickLabel).toString(), LEFT + i * xTickLength + 2, TOP + (VRANGE / 2) + 15);
-        context.fillText((yTickLabel).toString(), LEFT - 30, BOTTOM - i * yTickLength + 2);
+        context.fillText((yTickLabel).toString(), LEFT - 40, BOTTOM - i * yTickLength + 2);
     }
 
     context.beginPath();
     context.strokeStyle = "green";
     context.moveTo(
-        LEFT + xInc * (xValues[0] - xMin),
+        RIGHT - xInc * (xValues[0] - xMin),
         BOTTOM - yInc * (yValues[0] - yMin)
     );
     for (let i = 1; i < xLength; i++){
         context.lineTo(
-            LEFT + xInc * (xValues[i] - xMin),
+            RIGHT - xInc * (xValues[i] - xMin),
             BOTTOM - yInc * (yValues[i] - yMin)
         );
     }
