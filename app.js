@@ -50,8 +50,10 @@ function update(){
     context.lineTo(RIGHT, TOP + VRANGE / 2)
     context.stroke();
 
-    let slope = document.getElementById("v").value;
-    let values = makeGraph(slope);
+    let v = document.getElementById("v").value;
+    let e0 = document.getElementById("e0").value;
+
+    let values = makeGraph(v, e0);
     let xValues = values[0], yValues = values[1];
 
     let xMin = getMin(xValues), xMax = getMax(xValues);

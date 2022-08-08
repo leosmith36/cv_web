@@ -1,4 +1,4 @@
-export function makeGraph(v){
+export function makeGraph(nu, e0){
 
     const numberDistanceInc = 50; const numberTimeInc = 200;
     const distanceKeys = Array.from(new Array(numberDistanceInc + 1).keys());
@@ -6,8 +6,8 @@ export function makeGraph(v){
 
     const F = 96485, R = 8.31451;
 
-    let E1 = 0.2, E2 = -0.3, E0 = 0.013;
-    let n = 1, C = 6.1e-8, D = 1e-5, k0 = 1, k1 = 0.075, a = 0.5, A = 2.54e-2, T = 293.15;
+    let E1 = 0.2, E2 = -0.3, E0 = e0;
+    let n = 1, C = 6.1e-8, D = 1e-5, k0 = 1, k1 = 0.075, a = 0.5, A = 2.54e-2, T = 293.15, v = nu;
 
     let potentialRange = E2 - E1
     let potentialInc = potentialRange / (numberTimeInc / 2);

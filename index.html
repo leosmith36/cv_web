@@ -9,7 +9,9 @@
         <h1>Cyclic Voltammetry</h1>
         <div class="inputs">
             <label for="v">Scan Rate</label>
-            <input type="number" id="v" value=0.04 step="any">
+            <input type="range" id="v" min=0.01 max=0.1 value=0.04> <br>
+            <label for="e0">Standard Reduction Potential</label>
+            <input type="number" id="e0" value=0.013 step="any">
         </div>
         <div class="outputs">
             <canvas id="chart"></canvas>
