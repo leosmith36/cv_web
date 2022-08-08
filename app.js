@@ -3,16 +3,18 @@ import {makeGraph} from "./graph.js";
 let canvas = document.getElementById("chart");
 let context = canvas.getContext("2d");
 
-const WIDTH = 600;
+const WIDTH = 700;
 const HEIGHT = 400;
 
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 
-const TOP = 50, BOTTOM = HEIGHT - 50, LEFT = 50, RIGHT = WIDTH - 50;
+const TOP = 50, BOTTOM = HEIGHT - 50, LEFT = 125, RIGHT = WIDTH - 50;
 const HRANGE = RIGHT - LEFT, VRANGE = BOTTOM - TOP;
 
-const xLabel = "Potential (V)", yLabel = "Current (A)";
+const xLabel = "Applied Potential (V)", yLabel = "Current (A)";
+
+update();
 
 function getMin(array){
     let length = array.length;
@@ -48,7 +50,7 @@ function update(){
     context.lineTo(RIGHT, TOP + VRANGE / 2)
     context.stroke();
 
-    let slope = document.getElementById("slope").value;
+    let slope = document.getElementById("v").value;
     let values = makeGraph(slope);
     let xValues = values[0], yValues = values[1];
 
@@ -87,7 +89,9 @@ function update(){
     }
     context.stroke();
 
-    // console.log(yMin);
+    context.textAlign = "center";
+    context.fillText(xLabel, LEFT + (HRANGE / 2), BOTTOM + 25);
+    context.fillText(yLabel, LEFT - 80, TOP + (VRANGE / 2));
 }
 
 document.getElementById("button").addEventListener("click", update);

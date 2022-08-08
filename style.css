@@ -3,6 +3,15 @@ body {
     text-align:center;
 }
 
+.inputs {
+    float: left;
+}
+
+.outputs {
+    float: center;
+}
+
 #chart {
     background-color:white;
 }
+
