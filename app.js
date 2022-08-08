@@ -61,16 +61,16 @@ function update(){
 
     let xInc = HRANGE / xRange, yInc = VRANGE / yRange;
 
-    let xTick = xRange / xLength, yTick = yRange / yLength;
-
     let numberTicks = 10;
+
+    let xTick = xRange / numberTicks, yTick = yRange / numberTicks;
 
     let yTickLength = VRANGE / numberTicks, xTickLength = HRANGE / numberTicks;
 
     for (let i = 0; i <= numberTicks; i++){
-        let xTickLabel = (i * xTick).toFixed(1), yTickLabel = (i * yTick).toFixed(1);
+        let xTickLabel = (i * xTick + xMin).toFixed(3), yTickLabel = (i * yTick + yMin).toFixed(3);
         context.fillText((xTickLabel).toString(), LEFT + i * xTickLength + 2, TOP + (VRANGE / 2) + 15);
-        context.fillText((yTickLabel).toString(), LEFT - 22, BOTTOM - i * yTickLength + 2);
+        context.fillText((yTickLabel).toString(), LEFT - 30, BOTTOM - i * yTickLength + 2);
     }
 
     context.beginPath();
@@ -86,6 +86,8 @@ function update(){
         );
     }
     context.stroke();
+
+    // console.log(yMin);
 }
 
 document.getElementById("button").addEventListener("click", update);
