@@ -3,8 +3,12 @@ body {
     text-align:center;
 }
 
-.inputs {
+.input-table {
     float: left;
+}
+
+.input-num {
+    text-align: center;
 }
 
 .outputs {

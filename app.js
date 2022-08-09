@@ -97,3 +97,11 @@ function update(){
 }
 
 document.getElementById("button").addEventListener("click", update);
+
+document.getElementById("v").addEventListener("change", function(){
+    document.getElementById("v-num").value = document.getElementById("v").value;
+});
+
+document.getElementById("v-num").addEventListener("change", function(){
+    document.getElementById("v").value = document.getElementById("v-num").value;
+})

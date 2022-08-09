@@ -7,12 +7,27 @@
     </head>
     <body>
         <h1>Cyclic Voltammetry</h1>
-        <div class="inputs">
-            <label for="v">Scan Rate</label>
-            <input type="range" id="v" min=0.01 max=0.1 value=0.04> <br>
-            <label for="e0">Standard Reduction Potential</label>
-            <input type="number" id="e0" value=0.013 step="any">
-        </div>
+        <table class="input-table">
+            <tr>
+                <td>
+                    <label for="v">Scan Rate</label>
+                </td>
+                <td>
+                    <input type="range" id="v" class="input" min=0.01 max=0.1 step=0.01 value=0.04> <br>
+                </td>
+                <td>
+                    <input type="number" id="v-num" class="input-num" min=0.01 max=0.1 step=any value=0.04>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="e0">Std. Reduction Potential</label>
+                </td>
+                <td>
+                    <input type="range" id="e0" class="input" min=0.001 max=0.1 step=0.001 value=0.04> <br>
+                </td>
+            </tr>
+        </table>
         <div class="outputs">
             <canvas id="chart"></canvas>
             <br>
