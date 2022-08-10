@@ -58,6 +58,14 @@
                 <label for="T">Temperature</label>
                 <input type="range" id="T" class="input" min=0 max=500 step=0.0001 value=293.15>
                 <input type="number" id="T-num" class="input-num">
+
+                <label for="r">Angular Velocity</label>
+                <input type="range" id="r" class="input" min=0 max=2000 step=0.0001 value=0>
+                <input type="number" id="r-num" class="input-num">
+
+                <label for="k">Viscosity</label>
+                <input type="range" id="k" class="input" min=0 max=10 step=0.0001 value=1>
+                <input type="number" id="k-num" class="input-num">
             </div>
             <div id="outputs">
                 <canvas id="chart" width="800" height="500"></canvas>

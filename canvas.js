@@ -1,4 +1,4 @@
-function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T){
+function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k){
 
     const numberDistanceInc = 50; const numberTimeInc = 200;
     const distanceKeys = Array.from(new Array(numberDistanceInc + 1).keys());
@@ -6,7 +6,7 @@ function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T){
 
     const F = 96485, R = 8.31451;
 
-    // let n = 1, C = 6.1e-8, D = 1e-5, k0 = 1, k1 = 0.075, a = 0.5, A = 2.54e-2, T = 293.15;
+    let rot = r * (Math.PI / 30);
 
     let potentialRange = E2 - E1;
     let potentialInc = potentialRange / (numberTimeInc / 2);
@@ -131,8 +131,10 @@ export function update(){
     let a = parseFloat(document.getElementById("a").value);
     let A = parseFloat(document.getElementById("A").value);
     let T = parseFloat(document.getElementById("T").value);
+    let r = parseFloat(document.getElementById("r").value);
+    let k = parseFloat(document.getElementById("k").value);
 
-    let values = makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T);
+    let values = makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k);
     let xValues = values[0], yValues = values[1];
     console.log(xValues);
 
