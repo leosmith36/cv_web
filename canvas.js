@@ -46,6 +46,26 @@ function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k){
 
     for (let i = 0; i < numberTimeInc + 1; i++){
         for (let j = numberDistanceInc - 1; j >= 0; j--){
+
+            newIndex = j / (1 - 0.51 * Math.sqrt((rot ** 3 * D * tTotal) / k) * (j / Math.sqrt(D * l)));
+            newIndexInt = Math.floor(newIndex)
+            left = 1 - (newIndex - newIndexInt);
+            right = newIndex - newIndexInt;
+
+            newJ = clamp(newIndexInt, 1, numberDistanceInc - 3);
+
+            newCox = left * Cox[i - 1][newJ] + right * Cox[i - 1][newJ + 1];
+            newCoxLeft = left * Cox[i - 1][newJ - 1] + right * Cox[i - 1][newJ];
+            newCoxRight = left * Cox[i - 1][newJ + 1] + right * Cox[i - 1][newJ + 2]; 
+
+            newCred = left * Cred[i - 1][newJ] + right * Cred[i - 1][newJ + 1];
+            newCredLeft = left * Cred[i - 1][newJ - 1] + right * Cred[i - 1][newJ];
+            newCredRight = left * Cred[i - 1][newJ + 1] + right * Cred[i - 1][newJ + 2]; 
+
+            newCred_nr = left * Cred_nr[i - 1][newJ] + right * Cred_nr[i - 1][newJ + 1];
+            newCred_nrLeft = left * Cred_nr[i - 1][newJ - 1] + right * Cred_nr[i - 1][newJ];
+            newCred_nrRight = left * Cred_nr[i - 1][newJ + 1] + right * Cred_nr[i - 1][newJ + 2]; 
+
             if (i == 0 || j == numberDistanceInc - 1){
                 Cox[i][j] = C;
                 Cred[i][j] = 0;
@@ -92,6 +112,16 @@ function getMax(array){
         }
     }
     return max;
+}
+
+function clamp(n, min, max){
+    if (n > max){
+        return max;
+    }else if (n < min){
+        return min;
+    }else{
+        return n;
+    }
 }
 
 export function update(){
