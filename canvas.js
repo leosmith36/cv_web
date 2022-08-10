@@ -47,25 +47,6 @@ function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k){
     for (let i = 0; i < numberTimeInc + 1; i++){
         for (let j = numberDistanceInc - 1; j >= 0; j--){
 
-            newIndex = j / (1 - 0.51 * Math.sqrt((rot ** 3 * D * tTotal) / k) * (j / Math.sqrt(D * l)));
-            newIndexInt = Math.floor(newIndex)
-            left = 1 - (newIndex - newIndexInt);
-            right = newIndex - newIndexInt;
-
-            newJ = clamp(newIndexInt, 1, numberDistanceInc - 3);
-
-            newCox = left * Cox[i - 1][newJ] + right * Cox[i - 1][newJ + 1];
-            newCoxLeft = left * Cox[i - 1][newJ - 1] + right * Cox[i - 1][newJ];
-            newCoxRight = left * Cox[i - 1][newJ + 1] + right * Cox[i - 1][newJ + 2]; 
-
-            newCred = left * Cred[i - 1][newJ] + right * Cred[i - 1][newJ + 1];
-            newCredLeft = left * Cred[i - 1][newJ - 1] + right * Cred[i - 1][newJ];
-            newCredRight = left * Cred[i - 1][newJ + 1] + right * Cred[i - 1][newJ + 2]; 
-
-            newCred_nr = left * Cred_nr[i - 1][newJ] + right * Cred_nr[i - 1][newJ + 1];
-            newCred_nrLeft = left * Cred_nr[i - 1][newJ - 1] + right * Cred_nr[i - 1][newJ];
-            newCred_nrRight = left * Cred_nr[i - 1][newJ + 1] + right * Cred_nr[i - 1][newJ + 2]; 
-
             if (i == 0 || j == numberDistanceInc - 1){
                 Cox[i][j] = C;
                 Cred[i][j] = 0;
@@ -77,6 +58,26 @@ function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k){
                 Cred[i][j] = Cred[i][1] + (Jred[i] * xInc) / D;
                 Cred_nr[i][j] = Cred[i][j];
             }else{
+
+                let newIndex = j / (1 - 0.51 * Math.sqrt((rot ** 3 * D * tTotal) / k) * (j / Math.sqrt(D * l)));
+                let newIndexInt = Math.floor(newIndex)
+                let left = 1 - (newIndex - newIndexInt);
+                let right = newIndex - newIndexInt;
+    
+                let newJ = clamp(newIndexInt, 1, numberDistanceInc - 3);
+    
+                let newCox = left * Cox[i - 1][newJ] + right * Cox[i - 1][newJ + 1];
+                let newCoxLeft = left * Cox[i - 1][newJ - 1] + right * Cox[i - 1][newJ];
+                let newCoxRight = left * Cox[i - 1][newJ + 1] + right * Cox[i - 1][newJ + 2]; 
+    
+                let newCred = left * Cred[i - 1][newJ] + right * Cred[i - 1][newJ + 1];
+                let newCredLeft = left * Cred[i - 1][newJ - 1] + right * Cred[i - 1][newJ];
+                let newCredRight = left * Cred[i - 1][newJ + 1] + right * Cred[i - 1][newJ + 2]; 
+    
+                let newCred_nr = left * Cred_nr[i - 1][newJ] + right * Cred_nr[i - 1][newJ + 1];
+                let newCred_nrLeft = left * Cred_nr[i - 1][newJ - 1] + right * Cred_nr[i - 1][newJ];
+                let newCred_nrRight = left * Cred_nr[i - 1][newJ + 1] + right * Cred_nr[i - 1][newJ + 2]; 
+
                 Cox[i][j] = Cox[i - 1][j] + l * (Cox[i - 1][j - 1] - 2 * Cox[i - 1][j] + Cox[i - 1][j + 1]);
                 Cred[i][j] = Cred[i - 1][j] + l * (Cred[i - 1][j - 1] - 2 * Cred[i - 1][j] + Cred[i - 1][j + 1]) - k1 * tInc * Cred[i - 1][j];
                 Cred_nr[i][j] = Cred_nr[i - 1][j] + l * (Cred_nr[i - 1][j - 1] - 2 * Cred_nr[i - 1][j] + Cred_nr[i - 1][j + 1]);
@@ -166,7 +167,6 @@ export function update(){
 
     let values = makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k);
     let xValues = values[0], yValues = values[1];
-    console.log(xValues);
 
     let xMin = getMin(xValues), xMax = getMax(xValues);
     let yMin = getMin(yValues), yMax = getMax(yValues);
