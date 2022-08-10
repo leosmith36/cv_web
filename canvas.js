@@ -78,9 +78,9 @@ function makeGraph(v, E0, E1, E2, n, C, D, k0, k1, a, A, T, r, k){
                 let newCred_nrLeft = left * Cred_nr[i - 1][newJ - 1] + right * Cred_nr[i - 1][newJ];
                 let newCred_nrRight = left * Cred_nr[i - 1][newJ + 1] + right * Cred_nr[i - 1][newJ + 2]; 
 
-                Cox[i][j] = Cox[i - 1][j] + l * (Cox[i - 1][j - 1] - 2 * Cox[i - 1][j] + Cox[i - 1][j + 1]);
-                Cred[i][j] = Cred[i - 1][j] + l * (Cred[i - 1][j - 1] - 2 * Cred[i - 1][j] + Cred[i - 1][j + 1]) - k1 * tInc * Cred[i - 1][j];
-                Cred_nr[i][j] = Cred_nr[i - 1][j] + l * (Cred_nr[i - 1][j - 1] - 2 * Cred_nr[i - 1][j] + Cred_nr[i - 1][j + 1]);
+                Cox[i][j] = newCox + l * (newCoxLeft - 2 * newCox + newCoxRight);
+                Cred[i][j] = newCred + l * (newCredLeft - 2 * newCred + newCredRight) - k1 * tInc * newCred;
+                Cred_nr[i][j] = newCred_nr + l * (newCred_nrLeft - 2 * newCred_nr + newCred_nrRight);
             }
             Cprod[i][j] = Cred_nr[i][j] - Cred[i][j];
         }
@@ -134,13 +134,14 @@ export function update(){
     const WIDTH = canvas.width;
     const HEIGHT = canvas.height;
 
-    const TOP = 50, BOTTOM = HEIGHT - 50, LEFT = 125, RIGHT = WIDTH - 50;
+    const TOP = 50, BOTTOM = HEIGHT - 70, LEFT = 160, RIGHT = WIDTH - 50;
     const HRANGE = RIGHT - LEFT, VRANGE = BOTTOM - TOP;
 
     const xLabel = "Applied Potential (V)", yLabel = "Current (A)";
 
     context.clearRect(0, 0, WIDTH, HEIGHT);
     context.textAlign = "center";
+    context.font = "14px Helvetica";
 
     context.beginPath();
     context.strokeStyle = "black";
@@ -150,12 +151,12 @@ export function update(){
     context.lineTo(RIGHT, BOTTOM);
     context.stroke();
 
-    let v = parseFloat(document.getElementById("v").value);
-    let E0 = parseFloat(document.getElementById("e0").value);
-    let E1 = parseFloat(document.getElementById("e1").value);
-    let E2 = parseFloat(document.getElementById("e2").value);
+    let v = parseFloat(document.getElementById("v").value) / 1000;
+    let E0 = parseFloat(document.getElementById("e0").value) / 1000;
+    let E1 = parseFloat(document.getElementById("e1").value) / 1000;
+    let E2 = parseFloat(document.getElementById("e2").value) / 1000;
     let n = parseFloat(document.getElementById("n").value);
-    let C = parseFloat(document.getElementById("C").value);
+    let C = parseFloat(document.getElementById("C").value) / 1000;
     let D = parseFloat(document.getElementById("D").value);
     let k0 = parseFloat(document.getElementById("k0").value);
     let k1 = parseFloat(document.getElementById("k1").value);
@@ -187,13 +188,13 @@ export function update(){
     // context.strokeStyle = "#adadad";
     for (let i = 0; i <= numberTicks; i++){
 
-        let xTickLabel = ((numberTicks - i) * xTick + xMin).toFixed(3), yTickLabel = (i * yTick + yMin).toPrecision(3);
+        let xTickLabel = ((numberTicks - i) * xTick + xMin).toFixed(3), yTickLabel = parseFloat((i * yTick + yMin).toPrecision(3)).toExponential();
         let xTickX = LEFT + i * xTickLength, yTickY = BOTTOM - i * yTickLength;
 
-        context.fillText((xTickLabel).toString(), xTickX, BOTTOM + 15);
+        context.fillText((xTickLabel).toString(), xTickX, BOTTOM + 25);
         context.moveTo(xTickX, BOTTOM + 5);
         context.lineTo(xTickX, BOTTOM - 5);
-        context.fillText((yTickLabel).toString(), LEFT - 25, yTickY + 2);
+        context.fillText((yTickLabel).toString(), LEFT - 35, yTickY + 4);
         context.moveTo(LEFT - 5, yTickY);
         context.lineTo(LEFT + 5, yTickY);
     }
@@ -209,6 +210,7 @@ export function update(){
     context.beginPath();
     context.setLineDash([]);
     context.strokeStyle = "green";
+    context.lineWidth = "5";
     context.moveTo(
         RIGHT - xInc * (xValues[0] - xMin),
         BOTTOM - yInc * (yValues[0] - yMin)
@@ -220,7 +222,7 @@ export function update(){
         );
     }
     context.stroke();
-
-    context.fillText(xLabel, LEFT + (HRANGE / 2), BOTTOM + 40);
-    context.fillText(yLabel, LEFT - 80, TOP + (VRANGE / 2));
+    context.font = "bold 16px Helvetica";
+    context.fillText(xLabel, LEFT + (HRANGE / 2), HEIGHT - 15);
+    context.fillText(yLabel, 50, TOP + (VRANGE / 2));
 }
