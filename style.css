@@ -1,32 +1,41 @@
 body {
     background-color: maroon;
-    text-align: center;
 }
 
-#sim {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
+h1 {
+    text-align: center;
 }
 
 #inputs {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    position: absolute;
+    grid-template-columns: 200px 0.3fr 0.1fr;
+    background-color: aquamarine;
+    justify-content: center;
 }
 
-.input-num {
+.input, .input-num {
     text-align: center;
+    display: block;
 }
 
-input, label, #button {
-    display: block;
+#inputs > label {
+    text-align: left;
+}
+#outputs {
+    text-align: center;
 }
 
 #chart {
     background-color:white;
 }
 
-#button, #chart {
-    margin-left: auto;
-    margin-right: auto;
+#open-inputs {
+    background-color: black;
+    color: white;
+    cursor: pointer;
 }
 
+#open-inputs:hover{
+    background-color: #444;
+}

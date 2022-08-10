@@ -7,24 +7,60 @@
     </head>
     <body>
         <h1>Cyclic Voltammetry</h1>
+        <button href="javascript:void(0)" id="open-inputs">Inputs</button>
         <div id="sim">
             <div id="inputs">
-                <div>
-                    <label for="v">Scan Rate</label>
-                    <label for="e0">Std. Reduction Potential</label>
-                </div>
-                <div>
-                    <input type="range" id="v" class="input" min=0.01 max=0.1 step=0.01 value=0.04>
-                    <input type="range" id="e0" class="input" min=0.001 max=0.1 step=0.001 value=0.04>
-                </div>
-                <div>
-                    <input type="number" id="v-num" class="input-num" min=0.01 max=0.1 step=any value=0.04>
-                    <input type="number" id="e0-num" class="input-num" min=0.0001 max=0.1 step=any value=0.013>
-                </div>
+
+                <label for="v">Scan Rate</label>
+                <input type="range" id="v" class="input" min=0.01 max=0.1 step=0.0001 value=0.04>
+                <input type="number" id="v-num" class="input-num">
+
+                <label for="e0">Std. Reduction Potential</label>
+                <input type="range" id="e0" class="input" min=0.001 max=0.1 step=0.0001 value=0.04>
+                <input type="number" id="e0-num" class="input-num">
+                
+                <label for="e1">Starting Potential</label>
+                <input type="range" id="e1" class="input" min=-1 max=1 step=0.0001 value=0.2>
+                <input type="number" id="e1-num" class="input-num">
+
+                <label for="e2">Switching Potential</label>
+                <input type="range" id="e2" class="input" min=-1 max=1 step=0.0001 value=-0.3>
+                <input type="number" id="e2-num" class="input-num">
+
+                <label for="n">Number of Electrons</label>
+                <input type="range" id="n" class="input" min=1 max=3 step=1 value=1>
+                <input type="number" id="n-num" class="input-num">
+
+                <label for="C">Initial Concentration</label>
+                <input type="range" id="C" class="input" min=0 max=1e-6 step=1e-9 value=6.1e-8>
+                <input type="number" id="C-num" class="input-num">
+
+                <label for="D">Diffusion Coefficient</label>
+                <input type="range" id="D" class="input" min=1e-8 max=1e-4 step=1e-8 value=1e-5>
+                <input type="number" id="D-num" class="input-num">
+
+                <label for="k0">Rate Constant 1</label>
+                <input type="range" id="k0" class="input" min=0 max=10 step=0.0001 value=1>
+                <input type="number" id="k0-num" class="input-num">
+
+                <label for="k1">Rate Constant 2</label>
+                <input type="range" id="k1" class="input" min=0 max=1 step=0.0001 value=0.075>
+                <input type="number" id="k1-num" class="input-num">
+
+                <label for="a">Alpha</label>
+                <input type="range" id="a" class="input" min=0 max=1 step=0.0001 value=0.5>
+                <input type="number" id="a-num" class="input-num">
+
+                <label for="A">Electrode Area</label>
+                <input type="range" id="A" class="input" min=0 max=1 step=1e-4 value=2.54e-2>
+                <input type="number" id="A-num" class="input-num">
+
+                <label for="T">Temperature</label>
+                <input type="range" id="T" class="input" min=0 max=500 step=0.0001 value=293.15>
+                <input type="number" id="T-num" class="input-num">
             </div>
             <div id="outputs">
-                <canvas id="chart" width="700" height="400"></canvas>
-                <button id="button">Update</button>
+                <canvas id="chart" width="800" height="500"></canvas>
             </div>
         </div>
         <script type="module" src="app.js"></script>
