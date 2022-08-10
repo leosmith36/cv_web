@@ -14,19 +14,19 @@
             <div id="inputs">
 
                 <label for="v">Scan Rate (mV/s)</label>
-                <input type="range" id="v" class="input" min=0 max=200 step=0.001 value=40>
+                <input type="range" id="v" class="input" min=0 max=200 step=0.01 value=40>
                 <input type="number" id="v-num" class="input-num">
 
                 <label for="e0">Std. Reduction Potential (mV)</label>
-                <input type="range" id="e0" class="input" min=-750 max=750 step=0.001 value=13>
+                <input type="range" id="e0" class="input" min=-750 max=750 step=0.01 value=13>
                 <input type="number" id="e0-num" class="input-num">
                 
                 <label for="e1">Starting Potential (mV)</label>
-                <input type="range" id="e1" class="input" min=-1000 max=1000 step=0.001 value=200>
+                <input type="range" id="e1" class="input" min=-1000 max=1000 step=0.01 value=200>
                 <input type="number" id="e1-num" class="input-num">
 
                 <label for="e2">Switching Potential (mV)</label>
-                <input type="range" id="e2" class="input" min=-1000 max=1000 step=0.001 value=-300>
+                <input type="range" id="e2" class="input" min=-1000 max=1000 step=0.01 value=-300>
                 <input type="number" id="e2-num" class="input-num">
 
                 <label for="n">Number of Electrons</label>
@@ -34,39 +34,39 @@
                 <input type="number" id="n-num" class="input-num">
 
                 <label for="C">Initial Concentration (M)</label>
-                <input type="range" id="C" class="input" min=0 max=1e-3 step=any value=6.1e-5>
+                <input type="range" id="C" class="input" min=0 max=1e-3 step=1e-7 value=6.1e-5>
                 <input type="number" id="C-num" class="input-num">
 
                 <label for="D">Diffusion Coefficient (cm<sup>2</sup>/s)</label>
-                <input type="range" id="D" class="input" min=1e-8 max=1e-4 step=any value=1e-5>
+                <input type="range" id="D" class="input" min=1e-8 max=1e-4 step=1e-7 value=1e-5>
                 <input type="number" id="D-num" class="input-num">
 
                 <label for="k0">Std. Rate Constant (cm/s)</label>
-                <input type="range" id="k0" class="input" min=0 max=2 step=any value=1>
+                <input type="range" id="k0" class="input" min=0 max=2 step=0.01 value=1>
                 <input type="number" id="k0-num" class="input-num">
 
                 <label for="k1">1<sup>st</sup> Order Rate Constant (s<sup>-1</sup>)</label>
-                <input type="range" id="k1" class="input" min=0 max=0.15 step=any value=0.075>
+                <input type="range" id="k1" class="input" min=0 max=0.15 step=1e-5 value=0.075>
                 <input type="number" id="k1-num" class="input-num">
 
                 <label for="a">Transfer Coefficient</label>
-                <input type="range" id="a" class="input" min=0 max=1 step=any value=0.5>
+                <input type="range" id="a" class="input" min=0 max=1 step=0.01 value=0.5>
                 <input type="number" id="a-num" class="input-num">
 
                 <label for="A">Electrode Area (cm<sup>2</sup>)</label>
-                <input type="range" id="A" class="input" min=0 max=1 step=any value=2.54e-2>
+                <input type="range" id="A" class="input" min=0 max=1 step=1e-4 value=2.54e-2>
                 <input type="number" id="A-num" class="input-num">
 
                 <label for="T">Temperature (K)</label>
-                <input type="range" id="T" class="input" min=0 max=500 step=any value=293.15>
+                <input type="range" id="T" class="input" min=0 max=500 step=0.01 value=293.15>
                 <input type="number" id="T-num" class="input-num">
 
                 <label for="r">Rotation Rate (rpm)</label>
-                <input type="range" id="r" class="input" min=0 max=700 step=any value=0>
+                <input type="range" id="r" class="input" min=0 max=700 step=0.01 value=0>
                 <input type="number" id="r-num" class="input-num">
 
                 <label for="k">Kinematic Viscosity (cm<sup>2</sup>/s)</label>
-                <input type="range" id="k" class="input" min=0 max=10 step=any value=1>
+                <input type="range" id="k" class="input" min=0 max=10 step=0.01 value=1>
                 <input type="number" id="k-num" class="input-num">
             </div>
             <div id="outputs">
